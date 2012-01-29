@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# require 'tork/config/logdir'
+require 'tork/config/logdir'
 Tork::Config.overhead_load_paths = ['lib', 'test', 'lib/ttycoke', 'test/ttycoke']
 Tork::Config.all_test_file_globs = ['test/**/test_*.rb']
 Tork::Config.test_file_globbers = {
