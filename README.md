@@ -21,6 +21,8 @@ anyway,
 
 ## <a name="Installation"></a>Installation :)
 
+For specific Ruby version requirements, see the [Travis build](http://travis-ci.org/#!/jpablobr/ttycoke). ATM > 1.9.
+
 With RubyGems, simply open a terminal and type:
 
     $ {sudo} gem install ttycoke
