@@ -1,5 +1,4 @@
 require 'rake'
-require 'yard'
 require 'rake/testtask'
 require 'bundler/gem_tasks'
 
@@ -20,10 +19,6 @@ task :setup do
     system %Q{cp "$PWD/config/config.yaml" "$HOME/.ttycokerc"}
     puts "done."
   end
-end
-
-YARD::Rake::YardocTask.new do |t|
-  t.options += ['--verbose', '--title', 'TTYCoke Documentation']
 end
 
 task :default => "test:minitest"
