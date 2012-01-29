@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby -w
+
+require 'ttycoke'
+include TTYCoke::Log
+
+# Stdout/stderr should not buffer output
+$stdout.sync = true
+$stderr.sync = true
+
+TTYCoke::CLI.new.parse_options(ARGV)

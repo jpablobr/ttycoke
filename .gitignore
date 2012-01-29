@@ -1,0 +1,16 @@
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT::SPECIFIC
+TAGS
+*.log
+*.gem
+.bundle
+Gemfile.lock
+pkg
+.yardoc

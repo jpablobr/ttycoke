@@ -1,0 +1,6 @@
+syntax_error:
+  clrs: 
+    - green
+    - magenta
+    - bold
+  regex: !ruby/regexp '/(\w,)\s(\[.+\])\s{2}(\w+)\

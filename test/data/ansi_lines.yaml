@@ -1,0 +1,3 @@
+lsmod:
+  line: "i2c_algo_bit            4423  2 nouveau,i915"
+  exp: "\e[32mi2c_algo_bit\e[0m            \e[1m4423\e[0m  \e[33m2\e[0m nouveau,i915"

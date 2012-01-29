@@ -1,0 +1,21 @@
+lsmod:
+  clrs: 
+    - green
+    - uncolored
+    - blue
+    - uncolored
+    - yellow
+    - magenta
+  regex: !ruby/regexp '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
+
+whereis:
+  clrs: 
+    - yellow
+    - bold
+  regex: !ruby/regexp '/^(.+): (.+)/'
+
+id:
+  clrs: 
+    - green
+    - yellow
+  regex: !ruby/regexp '/^(\w+=)(\d+)/'
