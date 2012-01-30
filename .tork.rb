@@ -1,2 +1,2 @@
 # -*- encoding: utf-8 -*-
-# require 'tork/config/logdir'
+require 'tork/config/logdir'
