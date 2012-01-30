@@ -27,7 +27,7 @@ module TTYCoke
     @@logger.level     = Logger::INFO
 
     def log_debug cls, mthd, cllr, file, line, ivrs={}, lvrs={}
-      return unless $DEBUG
+      # return unless $TEST
       msg = "#{cls.class.name}##{mth}".magenta     +
         "\nCaller => " + "#{cllr[0][/`.*'/][1..-2]}".green +
         "\n---Instance Vars---"
@@ -39,7 +39,7 @@ module TTYCoke
     end
 
     def log_error cls, mthd, cllr, e, vars={}
-      return unless $DEBUG
+      # return unless $TEST
       status_code = e.status_code if e.respond_to?(:status_code)
       msg = "#{cls.class.name}##{mthd}".magenta     +
         "\nCaller => " + "#{cllr[0][/`.*'/][1..-2]}".green        +
@@ -58,12 +58,12 @@ module TTYCoke
         result = yield
         status = $? || 0
       rescue Exception => e
+        log_error(cls, mthd, cllr, e, vars.merge(status: status)) unless $TEST
         if ex_type
           raise ex_type.new(e)
         else
           raise TTYCoke::Errors::TTYCokeError.new(e)
-        end if $DEBUG || $TEST
-        log_error(cls, mthd, cllr, e, vars.merge(status: status))
+        end
         exit e.status_code if e.respond_to?(:status_code)
       end
       result
@@ -74,7 +74,7 @@ module TTYCoke
       status = $? || 0
       unless [0,172].include?(status)
         log_error(self, __method__, caller, e,
-            {status: status})
+            {status: status}) unless $TEST
         raise ArgumentError
         exit e.respond_to?(:status_code) ? e.status_code : Errno::ENOENT::Errno
       end
