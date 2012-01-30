@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require_relative '../test_helper'
+require 'test_helper'
 
 class ParserTest < MiniTest::Unit::TestCase
   def setup
