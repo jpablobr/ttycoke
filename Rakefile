@@ -5,8 +5,9 @@ require 'bundler/gem_tasks'
 namespace :test do
   Rake::TestTask.new do |t|
     t.name = "minitest"
-    t.libs << "lib"
-    t.pattern = "test/**/test_*.rb"
+    t.libs << "test"
+    t.test_files = FileList['test/ttycoke/test_*.rb', 'test/test_*.rb']
+    t.verbose = true
   end
 end
 
