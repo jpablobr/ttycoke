@@ -74,8 +74,42 @@ The following rake task will copy the `ttycoke/config/config.yaml` file to your 
 
 This file contains the regular expression rules and it's also where you'll be adding yours!
 
+## <a name="How-it-works"></a>How it works
+
+Basically it's just 1:1 match based on the specified colors to the
+regular expression groups. So, for example, with the following program rule:
+
+    lsmod:
+      clrs: 
+        - green
+        - uncolored
+        - blue
+        - uncolored
+        - yellow
+        - magenta
+      regex: !ruby/regexp '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
+
+will be matched as follows:
+
+    '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
+        |    |    |    |    |    |
+        |    |    |    |    |    \_: magenta
+        |    |    |    |    |
+        |    |    |    |    \_: yellow
+        |    |    |    |
+        |    |    |    \_: uncolored
+        |    |    |
+        |    |    \_:blue
+        |    |
+        |    \_:uncolored
+        |
+        \_:green
+
+I know this might also be possible by using named captures like \(?<green>success)(?<red>fail)\
+
 ## <a name="todo"></a>TODO
 * Add more sample regular expression parsers.
+* Add support for changing colors based on alternations (e.g /(fail|pass|error)/ yellow(fail),green(pass),red(error)).
 
 ## <a name="copyright"></a>Copyright
 Copyright (c) 2012 Jose Pablo Barrantes. See [LICENSE][] for details.

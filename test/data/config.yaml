@@ -1,32 +1,17 @@
 lsmod:
-  clrs: 
-    - green
-    - uncolored
-    - bold
-    - uncolored
-    - yellow
-    - uncolored
-  regex: !ruby/regexp '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
-
-whereis:
-  clrs: 
-    - yellow
-    - bold
-  regex: !ruby/regexp '/^(.+): (.+)/'
+  regex: !ruby/regexp
+    /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<red>.+)/
 
 id:
   clrs: 
-    - green
-    - yellow
-  regex: !ruby/regexp '/^(\w+=)(\d+)/'
+  regex: !ruby/regexp 
+    /^(?<green>\w+=)(?<yellow>\d+)/
 
 tail_tork_logs:
   -
     results:
-      clrs: 
-        - magenta
-      regex: !ruby/regexp '/^(Finished.*)/'
+      regex: !ruby/regexp 
+        /^(?<magenta>Finished.*)/
     stats:
-      clrs: 
-        - green
-      regex: !ruby/regexp '/^(\d.*)/'
+      regex: !ruby/regexp 
+        /^(?<green>\d.*)/

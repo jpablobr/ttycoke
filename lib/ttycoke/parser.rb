@@ -7,7 +7,7 @@ module TTYCoke
       def coke! prgm, line
         program = raw_config_parser(prgm, line)
         if program[:exist]
-          parse(program)
+          parse(program[:match])
         else
           return line
         end
@@ -17,20 +17,18 @@ module TTYCoke
 
       def raw_config_parser prgm, line
         program = {}
-        if prgm.is_a?(Hash) # single regex
+        if prgm.is_a?(Hash)
           if mch = prgm.fetch('regex').match(line)
             program.merge!({
                 exist: true,
-                clrs: prgm.fetch('clrs'),
                 match: mch
               })
           end
-        elsif prgm.is_a?(Array) # multiple regexps
+        elsif prgm.is_a?(Array)
           prgm[0].each { |p|
             if mch = p[1].fetch('regex').match(line)
               program.merge!({
                   exist: true,
-                  clrs: p[1].fetch('clrs'),
                   match: mch
                 })
             end # TODO: ATM, it only colors the last matched line!
@@ -41,9 +39,21 @@ module TTYCoke
         program
       end
 
-      def parse prgm, coked_str=''
-        (prgm.fetch(:match).size - 1).times do |i|
-          coked_str << prgm.fetch(:match)[i+1].send(prgm.fetch(:clrs).fetch(i))
+      def matchd_color mtch, current_match, color=''
+        mtch.names.each { |name|
+          color = name if mtch[name].to_s == current_match.to_s
+        }
+        color
+      end
+
+      def parse mtch, coked_str=''
+        (mtch.size - 1).times do |i|
+          color = matchd_color(mtch, mtch[i+1].to_s)
+          if color.empty? # ANSI fking bug!
+            coked_str << mtch[i+1]
+          else
+            coked_str << mtch[i+1].send(color.to_sym)
+          end
         end
         coked_str
       end

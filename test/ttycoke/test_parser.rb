@@ -8,14 +8,15 @@ class ParserTest < MiniTest::Unit::TestCase
     @ansi_lines = YAML::load(File.open(File.expand_path(ansi_line_file)))
   end
 
-  def test_lsmod
+  def test_one_regexp_match
     prgm = @config.find_program('lsmod')
     line = @ansi_lines.fetch('lsmod').fetch('line')
     expect = @ansi_lines.fetch('lsmod').fetch('exp')
+    puts TTYCoke::Parser.coke!(prgm, line)
     assert_equal expect, TTYCoke::Parser.coke!(prgm, line)
   end
 
-  def test_it_matches_multiple_regular_expressions
+  def test_multiple_regexps_match
     prgm = @config.find_program('tail_tork_logs')
     @ansi_lines.fetch('tail_tork_logs')[0].each { |p|
       assert_equal p[1].fetch('exp'), TTYCoke::Parser.coke!(prgm, p[1].fetch('line'))
