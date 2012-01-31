@@ -10,10 +10,10 @@ rules/colors).
 
 ## <a name="Before-After"></a>Before/After
 
-[![before](http://i.imgur.com/TJvob.png)][before] [![after](http://i.imgur.com/vxXzq.png)][after]
+[![before](http://i.imgur.com/nIen0.png)][before] [![after](http://i.imgur.com/4iVkc.png)][after]
 
-[before]: http://i.imgur.com/TJvob.png
-[after]: http://i.imgur.com/vxXzq.png
+[before]: http://i.imgur.com/nIen0.png
+[after]: http://i.imgur.com/4iVkc.png
 
 
 [![before](http://i.imgur.com/8gzEX.png)][before] [![after](http://i.imgur.com/SF7Cp.png)][after]
