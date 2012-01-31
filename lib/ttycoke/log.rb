@@ -26,7 +26,7 @@ module TTYCoke
     @@logger.formatter = TTYCokeLogFormat.new
     @@logger.level     = Logger::INFO
 
-    def log_debug cls, mthd, cllr, file, line, ivrs={}, lvrs={}
+    def log_debug cls, mth, cllr, file, line, ivrs={}, lvrs={}
       # return unless $TEST
       msg = "#{cls.class.name}##{mth}".magenta     +
         "\nCaller => " + "#{cllr[0][/`.*'/][1..-2]}".green +
@@ -73,9 +73,9 @@ module TTYCoke
       result = yield
       status = $? || 0
       unless [0,172].include?(status)
+        raise ArgumentError
         log_error(self, __method__, caller, e,
             {status: status}) unless $TEST
-        raise ArgumentError
         exit e.respond_to?(:status_code) ? e.status_code : Errno::ENOENT::Errno
       end
       result

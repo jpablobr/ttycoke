@@ -19,3 +19,14 @@ id:
     - green
     - yellow
   regex: !ruby/regexp '/^(\w+=)(\d+)/'
+
+tail_tork_logs:
+  -
+    results:
+      clrs: 
+        - magenta
+      regex: !ruby/regexp '/^(Finished.*)/'
+    stats:
+      clrs: 
+        - green
+      regex: !ruby/regexp '/^(\d.*)/'

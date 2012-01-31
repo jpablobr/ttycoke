@@ -14,4 +14,11 @@ class ParserTest < MiniTest::Unit::TestCase
     expect = @ansi_lines.fetch('lsmod').fetch('exp')
     assert_equal expect, TTYCoke::Parser.coke!(prgm, line)
   end
+
+  def test_it_matches_multiple_regular_expressions
+    prgm = @config.find_program('tail_tork_logs')
+    @ansi_lines.fetch('tail_tork_logs')[0].each { |p|
+      assert_equal p[1].fetch('exp'), TTYCoke::Parser.coke!(prgm, p[1].fetch('line'))
+    }
+  end
 end
