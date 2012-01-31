@@ -15,12 +15,6 @@ rules/colors).
 [before]: http://i.imgur.com/nIen0.png
 [after]: http://i.imgur.com/4iVkc.png
 
-
-[![before](http://i.imgur.com/8gzEX.png)][before] [![after](http://i.imgur.com/SF7Cp.png)][after]
-
-[before]: http://i.imgur.com/8gzEX.png
-[after]: http://i.imgur.com/SF7Cp.png
-
 Initial disclaimer! This mess is raw, like sushi. So, haters to the left.
 
 anyway, 
