@@ -79,9 +79,12 @@ This file contains the regular expression rules and it's also where you'll be ad
 Basically it's just 1:1 match to the specified colors in the regular
 expression groups. So for example, with the following rule:
 
+``` yaml
     lsmod:
       regex: !ruby/regexp 
         /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<magenta>.+)/
+
+```
 
 the lsmod program will be matched as follows: (I know kind of obvious)
 
@@ -101,33 +104,34 @@ following will create a green/red TDD kind of output:
 
 The first screenshot is based of the following:
 
-    tail_tork_logs:
-      -
-        results:
-          regex: !ruby/regexp 
-            /^(?<underscore>Finished.*)/
-        error:
-          regex: !ruby/regexp 
-            /(?<red>.+(Error|Failure):)/
-        expected:
-          regex: !ruby/regexp 
-            /(?<blue>--- expected)/
-        expected-string:
-          regex: !ruby/regexp 
-            /(?<blue>-\".+)/
-        actual:
-          regex: !ruby/regexp 
-            /(?<red>\++ actual)/
-        actual-string:
-          regex: !ruby/regexp 
-            /(?<red>\+\".+)/
-        at:
-          regex: !ruby/regexp 
-            /(?<on_yellow>@.+)/
-        stats:
-          regex: !ruby/regexp 
-            /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
-
+``` yaml
+tail_tork_logs:
+  -
+    results:
+      regex: !ruby/regexp 
+        /^(?<underscore>Finished.*)/
+    error:
+      regex: !ruby/regexp 
+        /(?<red>.+(Error|Failure):)/
+    expected:
+      regex: !ruby/regexp 
+        /(?<blue>--- expected)/
+    expected-string:
+      regex: !ruby/regexp 
+        /(?<blue>-\".+)/
+    actual:
+      regex: !ruby/regexp 
+        /(?<red>\++ actual)/
+    actual-string:
+      regex: !ruby/regexp 
+        /(?<red>\+\".+)/
+    at:
+      regex: !ruby/regexp 
+        /(?<on_yellow>@.+)/
+    stats:
+      regex: !ruby/regexp 
+        /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
+```
 
 and the `tail_tork_logs` looks like this:
 
