@@ -17,9 +17,9 @@ module TTYCoke
 
       def raw_config_parser prgm, line, program={}
         if prgm.is_a?(Hash)
-          program.merge! raw_config_to_hash prgm, line
+          program.merge!(raw_config_to_hash(prgm, line))
         elsif prgm.is_a?(Array)
-          prgm[0].each { |p| program.merge! raw_config_to_hash p[1], line }
+          prgm[0].each { |p| program.merge!(raw_config_to_hash(p[1], line)) }
         else
           program.merge!(exist: false)
         end
