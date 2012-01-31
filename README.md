@@ -76,40 +76,31 @@ This file contains the regular expression rules and it's also where you'll be ad
 
 ## <a name="How-it-works"></a>How it works
 
-Basically it's just 1:1 match based on the specified colors to the
-regular expression groups. So, for example, with the following program rule:
+Basically it's just 1:1 match to the specified colors in the regular
+expression groups. So for example, with the following rule:
 
     lsmod:
-      clrs: 
-        - green
-        - uncolored
-        - blue
-        - uncolored
-        - yellow
-        - magenta
-      regex: !ruby/regexp '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
+      regex: !ruby/regexp 
+        /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<magenta>.+)/
 
-will be matched as follows:
+the lsmod program will be matched as follows: (I know kind of obvious)
 
-    '/^(\w+)(\s+)(\d+)(\s+)(\d+)(.+)/'
-        |    |    |    |    |    |
-        |    |    |    |    |    \_: magenta
-        |    |    |    |    |
-        |    |    |    |    \_: yellow
-        |    |    |    |
-        |    |    |    \_: uncolored
-        |    |    |
-        |    |    \_:blue
-        |    |
-        |    \_:uncolored
-        |
+    '/^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<magenta>.+)/'
+        |            |                |           |                |             |
+        |            |                |           |                |             \_: magenta
+        |            |                |           |                \_: yellow
+        |            |                |           \_: uncolored
+        |            |                \_:blue
+        |            \_:uncolored
         \_:green
 
-I know this might also be possible by using named captures like \(?<green>success)(?<red>fail)\
+Based on that you can now take it a bit further and for example the
+following will create a green/red TDD kind of output:
+
+     ((?<green>success)|(?<red>fail|error))
 
 ## <a name="todo"></a>TODO
 * Add more sample regular expression parsers.
-* Add support for changing colors based on alternations (e.g /(fail|pass|error)/ yellow(fail),green(pass),red(error)).
 
 ## <a name="copyright"></a>Copyright
 Copyright (c) 2012 Jose Pablo Barrantes. See [LICENSE][] for details.
