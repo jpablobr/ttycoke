@@ -10,6 +10,12 @@ rules/colors).
 
 ## <a name="Before-After"></a>Before/After
 
+[![before](http://i.imgur.com/XNpy4.png)][before] [![after](http://i.imgur.com/JEFJ2.png)][after]
+
+[before]: http://i.imgur.com/XNpy4.png
+[after]: http://i.imgur.com/JEFJ2.png
+
+
 [![before](http://i.imgur.com/8gzEX.png)][before] [![after](http://i.imgur.com/SF7Cp.png)][after]
 
 [before]: http://i.imgur.com/8gzEX.png
@@ -98,6 +104,44 @@ Based on that you can now take it a bit further and for example the
 following will create a green/red TDD kind of output:
 
      ((?<green>success)|(?<red>fail|error))
+
+The first screenshot is based of the following:
+
+    tail_tork_logs:
+      -
+        results:
+          regex: !ruby/regexp 
+            /^(?<underscore>Finished.*)/
+        error:
+          regex: !ruby/regexp 
+            /(?<red>.+(Error|Failure):)/
+        expected:
+          regex: !ruby/regexp 
+            /(?<blue>--- expected)/
+        expected-string:
+          regex: !ruby/regexp 
+            /(?<blue>-\".+)/
+        actual:
+          regex: !ruby/regexp 
+            /(?<red>\++ actual)/
+        actual-string:
+          regex: !ruby/regexp 
+            /(?<red>\+\".+)/
+        at:
+          regex: !ruby/regexp 
+            /(?<on_yellow>@.+)/
+        stats:
+          regex: !ruby/regexp 
+            /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
+
+
+and the `tail_tork_logs` looks like this:
+
+    #!/bin/sh
+
+    tail -f log/test/**/*.log
+
+That's just from `tailing` the ouput of the [Tork](https://github.com/sunaku/tork) continuous testing framework.
 
 ## <a name="todo"></a>TODO
 * Add more sample regular expression parsers.

@@ -11,7 +11,25 @@ tail_tork_logs:
   -
     results:
       regex: !ruby/regexp 
-        /^(?<magenta>Finished.*)/
+        /^(?<underscore>Finished.*)/
+    error:
+      regex: !ruby/regexp 
+        /(?<red>.+(Error|Failure):)/
+    expected:
+      regex: !ruby/regexp 
+        /(?<blue>--- expected)/
+    expected-string:
+      regex: !ruby/regexp 
+        /(?<blue>-\".+)/
+    actual:
+      regex: !ruby/regexp 
+        /(?<red>\++ actual)/
+    actual-string:
+      regex: !ruby/regexp 
+        /(?<red>\+\".+)/
+    at:
+      regex: !ruby/regexp 
+        /(?<on_yellow>@.+)/
     stats:
       regex: !ruby/regexp 
-        /^(?<green>\d.*)/
+        /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
