@@ -12,7 +12,6 @@ class ParserTest < MiniTest::Unit::TestCase
     prgm = @config.find_program('lsmod')
     line = @ansi_lines.fetch('lsmod').fetch('line')
     expect = @ansi_lines.fetch('lsmod').fetch('exp')
-    puts TTYCoke::Parser.coke!(prgm, line)
     assert_equal expect, TTYCoke::Parser.coke!(prgm, line)
   end
 
