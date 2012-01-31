@@ -33,3 +33,12 @@ tail_tork_logs:
     stats:
       regex: !ruby/regexp 
         /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
+
+top:
+  -
+    tasks: 
+      regex: !ruby/regexp 
+        /(?<green>Tasks:.*)/
+    tasks: 
+      regex: !ruby/regexp 
+        /(?<blue>CPU.*)/
