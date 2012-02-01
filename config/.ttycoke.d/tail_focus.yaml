@@ -1,0 +1,15 @@
+cat_focus.sh:
+  -
+    first:
+      regex: !ruby/regexp
+        /(?<red># \w+)/
+    second:
+      regex: !ruby/regexp
+        /(?<yellow>## \w+)/
+    third:
+      regex: !ruby/regexp
+        /(?<green>### \w+)/
+    fouth:
+      regex: !ruby/regexp
+        /(?<blue>#### \w+)/
+

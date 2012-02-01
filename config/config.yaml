@@ -1,5 +1,6 @@
 # This file imports all the rules from the ttycoke.d directory.
 import:
-  - /ttycoke.d/lsmod.yaml
-  - /ttycoke.d/id.yaml
-  - /ttycoke.d/tail_tork_logs.yaml
+  - /.ttycoke.d/lsmod.yaml
+  - /.ttycoke.d/id.yaml
+  - /.ttycoke.d/cat_focus.yaml
+  - /.ttycoke.d/tail_tork_logs.yaml

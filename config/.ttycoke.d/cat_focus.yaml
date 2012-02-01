@@ -1,4 +1,4 @@
-tail-focus.sh:
+cat_focus.sh:
   -
     first:
       regex: !ruby/regexp

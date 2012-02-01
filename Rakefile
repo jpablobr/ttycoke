@@ -11,13 +11,14 @@ namespace :test do
   end
 end
 
-desc "install the rc file into user's home directory"
+desc "install .ttycokerc and .ttycoke.d into user's home directory"
 task :setup do
   if File.exist?(File.join(ENV['HOME'], ".ttycokerc"))
     puts "#{File.join(ENV['HOME'], '.ttycokerc')} already exist."
   else
-    puts "Coping .ttycokerc to $HOME directory"
+    puts "Coping .ttycokerc and .ttycoke.d to $HOME directory"
     system %Q{cp "$PWD/config/config.yaml" "$HOME/.ttycokerc"}
+    system %Q{cp -fr "$PWD/config/.ttycoke.d" "$HOME/.ttycoke.d"}
     puts "done."
   end
 end
