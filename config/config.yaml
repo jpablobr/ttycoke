@@ -1,44 +1,5 @@
-lsmod:
-  regex: !ruby/regexp
-    /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<red>.+)/
-
-id:
-  clrs: 
-  regex: !ruby/regexp 
-    /(?<green>\w+=)(?<yellow>\d+)/
-
-tail_tork_logs:
-  -
-    results:
-      regex: !ruby/regexp 
-        /^(?<underscore>Finished.*)/
-    error:
-      regex: !ruby/regexp 
-        /(?<red>.+(Error|Failure):)/
-    expected:
-      regex: !ruby/regexp 
-        /(?<blue>--- expected)/
-    expected-string:
-      regex: !ruby/regexp 
-        /(?<blue>-\".+)/
-    actual:
-      regex: !ruby/regexp 
-        /(?<red>\++ actual)/
-    actual-string:
-      regex: !ruby/regexp 
-        /(?<red>\+\".+)/
-    at:
-      regex: !ruby/regexp 
-        /(?<on_yellow>@.+)/
-    stats:
-      regex: !ruby/regexp 
-        /(?<white>\d+ tests, )(?<green>\d+ assertions, )(?<magenta>\d+ failures, )(?<red>\d+ errors, )(?<yellow>\d+ skips)/
-
-top:
-  -
-    tasks: 
-      regex: !ruby/regexp 
-        /(?<green>Tasks:.*)/
-    tasks: 
-      regex: !ruby/regexp 
-        /(?<blue>CPU.*)/
+# This file imports all the rules from the ttycoke.d directory.
+import:
+  - /ttycoke.d/lsmod.yaml
+  - /ttycoke.d/id.yaml
+  - /ttycoke.d/tail_tork_logs.yaml

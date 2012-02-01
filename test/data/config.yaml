@@ -1,17 +1,4 @@
-lsmod:
-  regex: !ruby/regexp
-    /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<red>.+)/
-
-id:
-  clrs: 
-  regex: !ruby/regexp 
-    /^(?<green>\w+=)(?<yellow>\d+)/
-
-tail_tork_logs:
-  -
-    results:
-      regex: !ruby/regexp 
-        /^(?<magenta>Finished.*)/
-    stats:
-      regex: !ruby/regexp 
-        /^(?<green>\d.*)/
+import:
+  - /ttycoke.d/lsmod.yaml
+  - /ttycoke.d/id.yaml
+  - /ttycoke.d/tail_tork_logs.yaml

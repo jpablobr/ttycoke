@@ -1,0 +1,4 @@
+id:
+  clrs: 
+  regex: !ruby/regexp 
+    /(?<green>\w+=)(?<yellow>\d+)/

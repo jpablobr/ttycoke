@@ -11,7 +11,10 @@ module TTYCoke
           init: config_file,
           tty_coke: File.dirname(__FILE__) + '/../../config/config.yaml'
         }
-        @config = YAML::load(File.open(File.expand_path(file)))
+        raw_yaml = YAML::load(File.open(File.expand_path(file)))
+        paths = raw_yaml.fetch('import')
+        importer = File.dirname(file)
+        @config = TTYCoke::Import.import(raw_yaml, paths, {}, importer)
       }
     end
 

@@ -7,8 +7,10 @@ module TTYCoke
   autoload :Log,      'ttycoke/log'
   autoload :Run,      'ttycoke/run'
   autoload :Parser,   'ttycoke/parser'
+  autoload :Import,   'ttycoke/import'
   autoload :Config,   'ttycoke/config'
   autoload :Errors,   'ttycoke/errors'
   autoload :Version,  'ttycoke/version'
   autoload :Platform, 'ttycoke/platform'
+  DIR = File.dirname(File.dirname(__FILE__))
 end

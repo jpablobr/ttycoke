@@ -1,0 +1,8 @@
+top:
+  -
+    tasks: 
+      regex: !ruby/regexp 
+        /(?<green>Tasks:.*)/
+    tasks: 
+      regex: !ruby/regexp 
+        /(?<blue>CPU.*)/

@@ -6,7 +6,7 @@ tail_tork_logs:
   -
     results:
       line: "Finished tests in 0.038402s, 52.0809 tests/s, 78.1214 assertions/s."
-      exp: "\e[35mFinished tests in 0.038402s, 52.0809 tests/s, 78.1214 assertions/s.\e[0m"
+      exp: "\e[4mFinished tests in 0.038402s, 52.0809 tests/s, 78.1214 assertions/s.\e[0m"
     stats:
       line: "2 tests, 2 assertions, 0 failures, 0 errors, 0 skips"
-      exp: "\e[32m2 tests, 2 assertions, 0 failures, 0 errors, 0 skips\e[0m"
+      exp: "\e[37m2 tests, \e[0m\e[32m2 assertions, \e[0m\e[35m0 failures, \e[0m\e[31m0 errors, \e[0m\e[33m0 skips\e[0m"

@@ -1,0 +1,3 @@
+lsmod:
+  regex: !ruby/regexp
+    /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<red>.+)/
