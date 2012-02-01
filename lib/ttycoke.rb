@@ -12,5 +12,4 @@ module TTYCoke
   autoload :Errors,   'ttycoke/errors'
   autoload :Version,  'ttycoke/version'
   autoload :Platform, 'ttycoke/platform'
-  DIR = File.dirname(File.dirname(__FILE__))
 end
