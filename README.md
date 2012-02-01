@@ -51,9 +51,11 @@ Now you are ready to start coking!
 If the program exist in the config file, it will use its rules to `ttycoke`
 it, otherwise it will fallback to its normal execution.
 
-You can also define your own rules for things such as `tailing` your logs! Something like the following should work:
+You can also define your own rules for things such as `tailing` your
+logs! Something like the following should work:
 
-Create an executable shell script and name it lets say, `my_awesome_app_logs.sh` with:
+Create an executable shell script and name it lets say,
+`my_awesome_app_logs.sh` with:
 
     #!/bin/sh
     tail -f ~/apps/my_awesome_app/log/**/*.log
@@ -68,11 +70,14 @@ Again, it's just a wrapper around the program, It just parses it
 stdout stream, so its capable of much more!
 
 ## <a name="Configuration"></a>Configuration
-The following rake task will copy the `ttycoke/config/config.yaml` file to your `$HOME` directory as `.ttycokerc`. 
+The following rake task will copy the `ttycoke/config/config.yaml` and
+`ttycoke/config/.ttycoke.d` directory to your `$HOME` as `.ttycokerc`
+and `.ttycoke.d` respectively.
 
     $ rake setup 
 
-This file contains the regular expression rules and it's also where you'll be adding yours!
+These files contain the programs rules and is also where you'll be
+adding yours.
 
 ## <a name="How-it-works"></a>How it works
 
@@ -80,9 +85,9 @@ Basically it's just 1:1 match to the specified colors in the regular
 expression groups. So for example, with the following rule:
 
 ``` yaml
-    lsmod:
-      regex: !ruby/regexp 
-        /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<magenta>.+)/
+lsmod:
+  regex: !ruby/regexp 
+    /^(?<green>\w+)(?<uncolored>\s+)(?<blue>\d+)(?<uncolored>\s+)(?<yellow>\d+)(?<magenta>.+)/
 
 ```
 
